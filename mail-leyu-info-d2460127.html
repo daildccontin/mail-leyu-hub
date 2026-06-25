@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>leyu · 知识库入口</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+            background: #f7f9fc;
+            color: #1d2a3a;
+            line-height: 1.7;
+        }
+        .hero {
+            background: linear-gradient(145deg, #0b1a2e 0%, #172a3f 100%);
+            color: #e7edf3;
+            padding: 4rem 2rem 3.2rem;
+            text-align: center;
+            border-bottom: 1px solid #2c4056;
+            position: relative;
+        }
+        .hero h1 {
+            font-size: 2.3rem;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            margin-bottom: 0.5rem;
+        }
+        .hero .sub {
+            font-size: 1.1rem;
+            opacity: 0.78;
+            max-width: 640px;
+            margin: 0.6rem auto 1.6rem;
+        }
+        .hero .tagline {
+            display: inline-block;
+            background: rgba(255,255,255,0.07);
+            padding: 0.3rem 1.2rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(255,255,255,0.15);
+            backdrop-filter: blur(2px);
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        .intro-section {
+            background: #ffffff;
+            padding: 2.8rem 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .intro-section .grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2.5rem;
+            justify-content: space-between;
+        }
+        .grid-col {
+            flex: 1 1 280px;
+        }
+        .grid-col h2 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #1b2b3e;
+            margin-bottom: 1rem;
+            border-left: 4px solid #2a7faa;
+            padding-left: 0.75rem;
+        }
+        .grid-col p {
+            font-size: 0.95rem;
+            color: #2e405a;
+            margin-bottom: 1.2rem;
+        }
+        .grid-col ul {
+            list-style: none;
+            padding: 0;
+        }
+        .grid-col li {
+            position: relative;
+            padding-left: 1.2rem;
+            margin-bottom: 0.6rem;
+            font-size: 0.95rem;
+            color: #1d2f42;
+        }
+        .grid-col li::before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: #2a7faa;
+            font-weight: 600;
+        }
+        .highlight-link {
+            color: #1b6b93;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid #cbdbe9;
+            transition: border-color 0.2s, color 0.2s;
+        }
+        .highlight-link:hover {
+            color: #0b4b6b;
+            border-bottom-color: #0b4b6b;
+        }
+        .card-section {
+            background: #f2f5fa;
+            padding: 2.8rem 0;
+        }
+        .card-section h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1.8rem;
+            color: #1b2b3e;
+            text-align: center;
+        }
+        .cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.8rem;
+            justify-content: center;
+        }
+        .card {
+            background: white;
+            border-radius: 14px;
+            padding: 1.8rem 1.5rem 1.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+            flex: 1 1 240px;
+            max-width: 320px;
+            border: 1px solid #e5ecf3;
+            transition: box-shadow 0.2s;
+        }
+        .card:hover {
+            box-shadow: 0 8px 24px rgba(27, 107, 147, 0.08);
+        }
+        .card .emoji {
+            display: block;
+            font-size: 2rem;
+            margin-bottom: 0.6rem;
+        }
+        .card h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+            color: #182b3f;
+        }
+        .card p {
+            font-size: 0.9rem;
+            color: #3b516a;
+        }
+        .faq-note {
+            background: white;
+            padding: 2.6rem 0;
+        }
+        .faq-note .faq-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1.4rem;
+        }
+        .faq-item {
+            border-left: 3px solid #9fbad0;
+            padding-left: 1rem;
+        }
+        .faq-item .q {
+            font-weight: 600;
+            font-size: 1rem;
+            color: #1b2b3e;
+        }
+        .faq-item .a {
+            font-size: 0.94rem;
+            color: #2d4159;
+            margin-top: 0.2rem;
+        }
+        .info-bar {
+            background: #e9eff6;
+            padding: 1.8rem 0;
+            border-top: 1px solid #d6e0ea;
+        }
+        .info-bar p {
+            font-size: 0.92rem;
+            color: #1d3146;
+            text-align: center;
+        }
+        .info-bar a {
+            color: #1b6b93;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-thickness: 1px;
+        }
+        .footer {
+            text-align: center;
+            padding: 2rem 0 2.5rem;
+            background: #f7f9fc;
+            font-size: 0.85rem;
+            color: #5b6f85;
+        }
+        @media (max-width: 640px) {
+            .hero h1 { font-size: 1.8rem; }
+            .hero { padding: 3rem 1rem 2.4rem; }
+            .grid-col { flex: 1 1 100%; }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <div class="container">
+            <div class="tagline">知识库入口 · 稳定链路</div>
+            <h1>leyu · 信息索引</h1>
+            <p class="sub">将分散的上下文收敛为可回溯的结构。围绕 <a href="https://mail-leyu.com.cn" class="highlight-link" style="color:#b3d4eb;border-bottom:1px solid #4c7696;">leyu</a> 构建的说明与提示聚合区。</p>
+        </div>
+    </div>
+
+    <section class="intro-section">
+        <div class="container grid">
+            <div class="grid-col">
+                <h2>说明区</h2>
+                <p>页面定位为认知入口 —— 帮助你快速理解 <strong>leyu</strong> 所涉及的基本概念、常用路径与边界信息。所有内容均基于可验证的功能边界，不包含推测性描述。</p>
+                <p>如需直接操作或检查服务状态，建议通过 <a href="https://mail-leyu.com.cn" class="highlight-link">leyu</a> 获取实时反馈。</p>
+            </div>
+            <div class="grid-col">
+                <h2>提示区</h2>
+                <ul>
+                    <li>在访问前确认网络环境与终端兼容性</li>
+                    <li>关键操作留意页面返回的明确状态码</li>
+                    <li>会话与密钥信息请勿通过非加密渠道传输</li>
+                    <li>遇到异常响应优先查阅本地日志与帮助文档</li>
+                </ul>
+            </div>
+            <div class="grid-col">
+                <h2>相关信息区</h2>
+                <ul>
+                    <li>协议参考 · 标准请求与响应格式</li>
+                    <li>配置示例 · 常见环境适配参数</li>
+                    <li>变更记录 · 接口与资源更新摘要</li>
+                    <li>社区讨论 · 问题模式与解决方案归档</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="card-section">
+        <div class="container">
+            <h3>场景速览</h3>
+            <div class="cards">
+                <div class="card">
+                    <span class="emoji">📋</span>
+                    <h4>状态验证</h4>
+                    <p>通过标准请求确认服务可达性及响应时间，适用于定期健康检查。</p>
+                </div>
+                <div class="card">
+                    <span class="emoji">🔐</span>
+                    <h4>凭据管理</h4>
+                    <p>密钥轮换、权限表更新与访问令牌生命周期说明。</p>
+                </div>
+                <div class="card">
+                    <span class="emoji">🧩</span>
+                    <h4>集成映射</h4>
+                    <p>第三方系统对接时的字段映射、回调格式与错误处理惯例。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq-note">
+        <div class="container">
+            <h3 style="margin-bottom:1.8rem; font-weight:600; color:#1b2b3e;">常见要点摘要</h3>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <div class="q">如何确认当前使用的环境指向？</div>
+                    <div class="a">检查地址栏或配置文件中域名部分，确保其与目标资源一致。可通过 <a href="https://mail-leyu.com.cn" class="highlight-link">leyu</a> 返回的头部信息辅助判断。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="q">接口返回超时的常见原因？</div>
+                    <div class="a">防火墙规则、dns 解析延迟、证书链不完整或负载过高。建议从网络层与超时阈值两方面排查。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="q">哪些数据不适合通过明文传递？</div>
+                    <div class="a">任何认证令牌、私有密钥及个人标识信息均应采用加密传输，并避免记录在日志中。</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="info-bar">
+        <div class="container">
+            <p>本页面为知识库入口式说明，所有引用均基于公开功能边界。基础服务节点：<a href="https://mail-leyu.com.cn">leyu</a> · 直接访问获取最新上下文。</p>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="container">
+            <span>索引构建于稳定入口之上 · 内容定期核对</span>
+        </div>
+    </div>
+</body>
+</html>
